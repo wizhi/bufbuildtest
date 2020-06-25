@@ -22,5 +22,5 @@ jobs:
       - uses: wizhi/actions-buf@v1
         with:
           version: 0.18.0
-      - run: buf check breaking --against-input ".git#branch=master"
+      - run: buf check breaking --against-input ".git#ref=${{ github.ref }}^"
 
