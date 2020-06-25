@@ -3,7 +3,6 @@ syntax = "proto3";
 package wesoft.rental.unik.connector.v1;
 
 message CreateRequest {
-  int32 id = 1;
 }
 
 message CreateResponse {
