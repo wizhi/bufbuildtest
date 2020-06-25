@@ -23,7 +23,7 @@ jobs:
         with:
           version: 0.18.0
       - run: >
-          git checkout HEAD^1;
+          git checkout ${{ github.ref }}^1;
           buf image build --output previous.bin;
           git checkout ${{ github.ref }};
       - run: buf check breaking --against-input previous.bin
