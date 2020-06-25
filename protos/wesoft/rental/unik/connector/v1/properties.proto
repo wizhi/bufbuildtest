@@ -15,5 +15,4 @@ message UpdateResponse {
 }
 
 service PropertyService {
-  rpc Update (stream UpdateRequest) returns (UpdateResponse);
 }
