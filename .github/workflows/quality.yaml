@@ -22,9 +22,5 @@ jobs:
       - uses: wizhi/actions-buf@v1
         with:
           version: 0.18.0
-      - run: >
-          git checkout HEAD^;
-          buf image build --output previous.bin;
-          git checkout ${{ github.ref }};
-      - run: buf check breaking --against-input previous.bin
+      - run: buf check breaking --against-input ".git#branch=master"
 
