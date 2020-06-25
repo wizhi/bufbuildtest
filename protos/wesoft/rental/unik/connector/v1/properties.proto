@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package wesoft.rental.unik.connector.v1;
+
+message CreateRequest {
+  int32 id = 1;
+}
+
+message CreateResponse {
+  int32 id = 1;
+}
+
+message UpdateRequest {
+  int32 id = 1;
+}
+
+message UpdateResponse {
+  int32 id = 1;
+}
+
+service PropertyService {
+  rpc Create (stream CreateRequest) returns (CreateResponse);
+  rpc Update (stream UpdateRequest) returns (UpdateResponse);
+}

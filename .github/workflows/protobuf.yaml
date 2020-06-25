@@ -1,0 +1,20 @@
+name: Generate protobuf stubs
+
+on: push
+
+jobs:
+  check:
+    steps:
+      - name: echo
+        run: echo ${{ env.PATH }}
+    #    - name: install buf
+    #      env:
+    #        BUF_VERSION: 0.18.0
+    #        ARCHITECTURE: x86-64 # GitHub has no real documentation on this, nor any way to get it at runtime
+    #      run: |
+    #        curl --silent --show-error --fail --location \
+    #          "https://github.com/bufbuild/buf/releases/download/v${{ env.BUF_VERSION }}/buf-${{ runner.os }}-${{ env.ARCHITECTURE }}" \
+    #          --create-dirs --output "buf"
+    #
+    #    - name: checkout
+    #      uses: actions/checkout@v2

@@ -1,0 +1,43 @@
+version: '2'
+
+expansions: 3
+
+vars:
+  BUILD_PATH: .build
+  PROTO_IMAGE_PATH: "{{ .BUILD_PATH }}/protos/image.bin"
+  PROTO_STUBS_PATH: "{{ .BUILD_PATH }}/protos/stubs"
+
+tasks:
+  proto-lint:
+    cmds:
+      - buf check lint
+
+  proto-clean:
+    cmds:
+      - rm -f "{{ .PROTO_IMAGE_PATH }}"
+      - rm -rf "{{ .PROTO_STUBS_PATH }}"
+
+  proto-build:
+    vars:
+      PROTO_IMAGE_BASE_PATH:
+        sh: dirname "{{ .PROTO_IMAGE_PATH }}"
+    cmds:
+      - mkdir --parents "{{ .PROTO_IMAGE_BASE_PATH }}"
+      - buf image build --output "{{ .PROTO_IMAGE_PATH }}"
+    sources:
+      - "{{ .PROTO_IMAGE_PATH }}"
+    generates:
+      - "{{ .PROTO_IMAGE_PATH }}"
+
+  proto-stubs:
+    deps:
+      - proto-stubs-csharp
+
+  proto-stubs-csharp:
+    vars:
+      PROTO_STUBS_PATH_CSHARP: "{{ .PROTO_STUBS_PATH }}/csharp"
+    deps:
+      - proto-build
+    cmds:
+      - mkdir --parents "{{ .PROTO_STUBS_PATH_CSHARP }}"
+      - protoc --descriptor_set_in "{{ .PROTO_IMAGE_PATH }}" --csharp_out "{{ .PROTO_STUBS_PATH_CSHARP }}" $(buf ls-files --input "{{ .PROTO_IMAGE_PATH }}")
