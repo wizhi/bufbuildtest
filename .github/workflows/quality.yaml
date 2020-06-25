@@ -1,8 +1,6 @@
 name: Protobuf checking
 
-on: 
-  - push
-  - pull_request
+on: push
 
 jobs:
   linting:
