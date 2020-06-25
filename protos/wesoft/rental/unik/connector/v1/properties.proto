@@ -15,6 +15,5 @@ message UpdateResponse {
 }
 
 service PropertyService {
-  rpc Create (stream CreateRequest) returns (CreateResponse);
   rpc Update (stream UpdateRequest) returns (UpdateResponse);
 }
