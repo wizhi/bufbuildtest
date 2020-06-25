@@ -12,7 +12,6 @@ message UpdateRequest {
 }
 
 message UpdateResponse {
-  int32 id = 1;
 }
 
 service PropertyService {
