@@ -1,0 +1,24 @@
+name: Protobuf checking
+
+on: push
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: wizhi/setup-buf
+        with:
+          version: 0.18.1
+      - name: Linting
+        run: buf check lint
+
+  breaking:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: wizhi/setup-buf
+        with:
+          version: 0.18.1
+      - name: Linting
+        run: buf check breaking
