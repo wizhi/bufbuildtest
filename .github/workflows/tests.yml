@@ -20,3 +20,9 @@ jobs:
       - uses: wizhi/setup-buf@development
       - run: buf check breaking --against-input ".git#ref=${{ github.ref }}^"
 
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: wizhi/setup-buf@development
+      - run: buf -v
