@@ -8,6 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: wizhi/setup-buf@master
+        with:
+          version: 0.32.0
       - name: Linting
         run: buf check lint
 
@@ -18,11 +20,15 @@ jobs:
         with:
           fetch-depth: 2
       - uses: wizhi/setup-buf@master
+        with:
+          version: 0.32.0
       - run: buf check breaking --against-input ".git#ref=${{ github.ref }}^"
 
   version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: wizhi/setup-buf@development
+      - uses: wizhi/setup-buf@master
+        with:
+          version: 0.32.0
       - run: buf -v
