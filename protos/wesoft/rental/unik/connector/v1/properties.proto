@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package wesoft.rental.unik.connector.v1;
+package wesoft.rental.unik.connector;
 
 message CreateRequest {
   int32 id = 1;
