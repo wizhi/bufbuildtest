@@ -7,7 +7,6 @@ message CreateRequest {
 }
 
 message CreateResponse {
-  int32 id = 1;
 }
 
 message UpdateRequest {
