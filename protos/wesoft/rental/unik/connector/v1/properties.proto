@@ -6,7 +6,6 @@ message CreateRequest {
 }
 
 message CreateResponse {
-  int32 foo = 5;
 }
 
 message UpdateRequest {
