@@ -22,7 +22,7 @@ jobs:
       - uses: wizhi/setup-buf@v1
         with:
           version: 0.44.0
-      - run: buf check breaking --against-input ".git#ref=${{ github.ref }}^"
+      - run: buf breaking --against-input ".git#ref=${{ github.ref }}^"
 
   version:
     runs-on: ubuntu-latest
